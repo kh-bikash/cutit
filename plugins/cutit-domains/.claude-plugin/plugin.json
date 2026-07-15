@@ -1,0 +1,8 @@
+{
+  "name": "cutit-domains",
+  "displayName": "cutit: frontend, backend & design",
+  "version": "1.0.0",
+  "description": "3 cutit skills for the pillars of building a product without wasting tokens: frontend (source over bundles, capped devtool logs), backend (bounded queries, diffed migrations), and design (grep-then-diff for design systems, Figma specs, ADRs).",
+  "keywords": ["token-efficiency", "frontend", "backend", "design"],
+  "skills": "./skills/"
+}

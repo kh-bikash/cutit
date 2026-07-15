@@ -3,12 +3,37 @@
   "owner": {
     "name": "cutit"
   },
-  "description": "Marketplace hosting the cutit plugin: 112 Claude Code skills for cutting LLM token usage on agentic work without losing result quality.",
+  "description": "Marketplace hosting the cutit family of plugins: Claude Code skills for cutting LLM token usage on agentic work without losing result quality. Install the all-in-one `cutit` plugin, or pick just the themed bundle(s) you need.",
   "plugins": [
     {
       "name": "cutit",
       "source": "./plugins/cutit",
-      "description": "112 Claude Code skills for cutting LLM token usage on agentic coding work without cutting result quality."
+      "description": "All 112 cutit skills bundled together: the core protocol plus every themed skill below. Simplest install, ~10k tokens always-on."
+    },
+    {
+      "name": "cutit-agents",
+      "source": "./plugins/cutit-agents",
+      "description": "24 skills for building/orchestrating agent workflows: planning, sub-agent delegation, multi-agent pipelines."
+    },
+    {
+      "name": "cutit-tooling",
+      "source": "./plugins/cutit-tooling",
+      "description": "22 skills for tool use, retrieval/RAG, and prompt construction."
+    },
+    {
+      "name": "cutit-runtime",
+      "source": "./plugins/cutit-runtime",
+      "description": "42 skills for operating long-running agents: context/memory budgeting, sessions, error recovery, caching, state tracking, model routing, search strategy."
+    },
+    {
+      "name": "cutit-quality",
+      "source": "./plugins/cutit-quality",
+      "description": "20 skills for correctness and output discipline: verification, human-in-the-loop, eval/guardrails, response-length discipline."
+    },
+    {
+      "name": "cutit-domains",
+      "source": "./plugins/cutit-domains",
+      "description": "3 skills for frontend, backend, and design work."
     }
   ]
 }

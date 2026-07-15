@@ -1,0 +1,8 @@
+{
+  "name": "cutit-runtime",
+  "displayName": "cutit: running long-lived agents",
+  "version": "1.0.0",
+  "description": "42 cutit skills for operating long-running or production agents without wasting tokens: context/memory budgeting, session management, error recovery, caching/reuse, state tracking, model routing, and search strategy.",
+  "keywords": ["token-efficiency", "context-management", "sessions", "caching", "reliability"],
+  "skills": "./skills/"
+}

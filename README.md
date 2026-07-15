@@ -34,36 +34,54 @@ The swarm has three layers, all bundled in one installable plugin (see
 
 ## Install
 
-This repo is a Claude Code **plugin marketplace** (`.claude-plugin/marketplace.json`
-at the root) hosting one plugin, `cutit`, that bundles all 112 skills
-under `plugins/cutit/skills/`. It's live at
-[github.com/kh-bikash/cutit](https://github.com/kh-bikash/cutit) — anyone
-with Claude Code can install it in two steps, run inside Claude Code
-itself:
+This repo is a Claude Code **plugin marketplace**
+(`.claude-plugin/marketplace.json` at the root), live at
+[github.com/kh-bikash/cutit](https://github.com/kh-bikash/cutit), hosting
+**six plugins** so you can install everything or just the slice you need:
 
 ```
 /plugin marketplace add kh-bikash/cutit
-/plugin install cutit@cutit-marketplace
+/plugin install <plugin-name>@cutit-marketplace
 ```
 
-(A local folder also works the same way —
+| Plugin | Skills | Always-on cost* | What it's for |
+|---|---|---|---|
+| `cutit` | 112 (all of them) | ~10,220 tok | The whole swarm in one shot |
+| `cutit-agents` | 24 | ~2,589 tok | Building/orchestrating agent workflows: planning, sub-agent delegation, multi-agent pipelines |
+| `cutit-tooling` | 22 | ~1,874 tok | Tool use, retrieval/RAG, prompt construction |
+| `cutit-runtime` | 42 | ~3,815 tok | Operating long-running agents: context/memory budgeting, sessions, error recovery, caching, state, model routing, search |
+| `cutit-quality` | 20 | ~1,859 tok | Correctness/output discipline: verification, human-in-the-loop, eval/guardrails, response-length |
+| `cutit-domains` | 3 | ~340 tok | Frontend, backend, design work |
+
+*All six numbers measured directly with `claude plugin details
+<plugin>@cutit-marketplace` on this build, not estimated.
+
+Pick `cutit` if you want it all with the least setup. Pick one or more of
+the other five if you know which part of your work this needs to help
+with — they compose freely (install `cutit-agents` + `cutit-tooling`
+together, for instance, without pulling in `cutit-runtime` too). A local
+folder works the same way as the GitHub form —
 `/plugin marketplace add /path/to/cutit` — if you're testing a clone or a
-fork before it's pushed.)
+fork before it's pushed.
 
 Once installed, every skill is available automatically (Claude Code
 invokes them when relevant) and can also be called explicitly, namespaced
-under the plugin: `/cutit:cutit`, `/cutit:cutit-frontend`,
-`/cutit:cutit-parallel-delegation`, etc.
+under whichever plugin it came from: `/cutit:cutit`,
+`/cutit-domains:cutit-frontend`, `/cutit-agents:cutit-parallel-delegation`,
+etc.
 
-**Every skill installs at once.** Installing the plugin brings in all 112
-skills together — there's no per-skill install through the marketplace.
-Measured via `claude plugin details cutit@cutit-marketplace`, that's
-**~10,220 tokens, always-on, in every session**, whether or not any of
-them ever get invoked. If you'd rather cherry-pick, skip the plugin and
-copy only the folders you want directly from
-`plugins/cutit/skills/<name>/` into your own `.claude/skills/<name>/`
+**Still want finer than plugin-level granularity?** All six plugins pull
+their skill content from one canonical source,
+`plugins/cutit/skills/<name>/`. Skip installing any plugin and copy just
+the folders you want from there into your own `.claude/skills/<name>/`
 (project-level) or `~/.claude/skills/<name>/` (global) — see
 [SWARM.md](SWARM.md) for the full list to choose from.
+
+**Maintainer note:** the five themed plugins (`cutit-agents`,
+`cutit-tooling`, `cutit-runtime`, `cutit-quality`, `cutit-domains`) are
+generated, not hand-edited — `plugins/cutit/skills/` is the source of
+truth. After changing a skill there, run `scripts/sync-plugins.sh` to
+propagate it into whichever themed plugin bundles it, before committing.
 
 ## Why this works
 

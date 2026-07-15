@@ -1,0 +1,8 @@
+{
+  "name": "cutit-agents",
+  "displayName": "cutit: agent building & orchestration",
+  "version": "1.0.0",
+  "description": "24 cutit skills for building and orchestrating agent workflows without wasting tokens: task planning/decomposition, sub-agent delegation, and multi-agent pipeline handoffs.",
+  "keywords": ["token-efficiency", "agents", "orchestration", "planning"],
+  "skills": "./skills/"
+}
