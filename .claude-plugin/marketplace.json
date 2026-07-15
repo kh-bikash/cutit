@@ -1,8 +1,9 @@
 {
   "name": "cutit-marketplace",
   "owner": {
-    "name": "cutit"
+    "name": "kh-bikash"
   },
+  "version": "1.1.0",
   "description": "Marketplace hosting the cutit family of plugins: Claude Code skills for cutting LLM token usage on agentic work without losing result quality. Just want general token reduction? Install `cutit-core`. Want everything? Install `cutit`. Otherwise pick the themed bundle(s) you need.",
   "plugins": [
     {

@@ -1,7 +1,8 @@
 {
   "name": "cutit-quality",
   "displayName": "cutit: correctness & output discipline",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "author": { "name": "kh-bikash", "url": "https://github.com/kh-bikash" },
   "description": "20 cutit skills for keeping quality high while cutting tokens: cheap-before-expensive verification, human-in-the-loop clarification, eval/guardrail ordering, and output-length discipline.",
   "keywords": ["token-efficiency", "verification", "evals", "guardrails", "quality"],
   "skills": "./skills/"

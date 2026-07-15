@@ -1,7 +1,8 @@
 {
   "name": "cutit-tooling",
   "displayName": "cutit: tool use, retrieval & prompting",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "author": { "name": "kh-bikash", "url": "https://github.com/kh-bikash" },
   "description": "22 cutit skills for how an agent talks to tools, retrieval, and its own prompt without wasting tokens: tool-schema management, RAG/retrieval sizing, and prompt/context construction.",
   "keywords": ["token-efficiency", "tools", "rag", "retrieval", "prompting"],
   "skills": "./skills/"

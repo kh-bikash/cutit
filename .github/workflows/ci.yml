@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  drift-check:
+    name: Canonical skills in sync with themed plugins
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Re-run sync and diff
+        run: |
+          bash scripts/sync-plugins.sh
+          if ! git diff --exit-code -- plugins/; then
+            echo "::error::plugins/*/skills/ is out of sync with plugins/cutit/skills/ (the canonical source)."
+            echo "::error::Someone likely edited a generated copy directly, or edited the canonical source without re-running scripts/sync-plugins.sh."
+            echo "::error::Run 'bash scripts/sync-plugins.sh' locally and commit the result."
+            exit 1
+          fi
+
+  validate-manifests:
+    name: Validate plugin & marketplace manifests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Validate marketplace
+        run: claude plugin validate .
