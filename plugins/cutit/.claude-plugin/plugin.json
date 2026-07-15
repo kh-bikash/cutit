@@ -1,0 +1,8 @@
+{
+  "name": "cutit",
+  "displayName": "cutit",
+  "version": "1.0.0",
+  "description": "112 Claude Code skills for cutting LLM token usage on agentic coding work without cutting result quality — a core protocol plus 111 narrow skills for planning, sub-agent delegation, tool use, context budgeting, verification, retrieval, prompting, frontend/backend/design work, and more.",
+  "keywords": ["token-efficiency", "context-management", "agents", "productivity"],
+  "skills": "./skills/"
+}

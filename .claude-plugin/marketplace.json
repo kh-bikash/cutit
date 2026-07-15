@@ -1,0 +1,14 @@
+{
+  "name": "cutit-marketplace",
+  "owner": {
+    "name": "cutit"
+  },
+  "description": "Marketplace hosting the cutit plugin: 112 Claude Code skills for cutting LLM token usage on agentic work without losing result quality.",
+  "plugins": [
+    {
+      "name": "cutit",
+      "source": "./plugins/cutit",
+      "description": "112 Claude Code skills for cutting LLM token usage on agentic coding work without cutting result quality."
+    }
+  ]
+}
