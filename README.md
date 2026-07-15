@@ -36,22 +36,19 @@ The swarm has three layers, all bundled in one installable plugin (see
 
 This repo is a Claude Code **plugin marketplace** (`.claude-plugin/marketplace.json`
 at the root) hosting one plugin, `cutit`, that bundles all 112 skills
-under `plugins/cutit/skills/`. Anyone with Claude Code can install it in
-two steps, run inside Claude Code itself:
+under `plugins/cutit/skills/`. It's live at
+[github.com/kh-bikash/cutit](https://github.com/kh-bikash/cutit) — anyone
+with Claude Code can install it in two steps, run inside Claude Code
+itself:
 
 ```
-/plugin marketplace add <source>
+/plugin marketplace add kh-bikash/cutit
 /plugin install cutit@cutit-marketplace
 ```
 
-What `<source>` is depends on how this project is distributed:
-
-- **Shared as a local folder** (no git host yet): point at the folder —
-  `/plugin marketplace add /path/to/cutit` (or the Windows path, e.g.
-  `/plugin marketplace add D:\BFWAI\cutit`).
-- **Pushed to GitHub**: `/plugin marketplace add <owner>/<repo>`.
-- **Pushed to any other git host** (GitLab, self-hosted, etc.):
-  `/plugin marketplace add https://<host>/<owner>/<repo>.git`.
+(A local folder also works the same way —
+`/plugin marketplace add /path/to/cutit` — if you're testing a clone or a
+fork before it's pushed.)
 
 Once installed, every skill is available automatically (Claude Code
 invokes them when relevant) and can also be called explicitly, namespaced
@@ -60,15 +57,13 @@ under the plugin: `/cutit:cutit`, `/cutit:cutit-frontend`,
 
 **Every skill installs at once.** Installing the plugin brings in all 112
 skills together — there's no per-skill install through the marketplace.
-That's ~112 lines of fixed overhead in every session's skill listing. If
-you'd rather cherry-pick, skip the plugin and copy only the folders you
-want directly from `plugins/cutit/skills/<name>/` into your own
-`.claude/skills/<name>/` (project-level) or `~/.claude/skills/<name>/`
-(global) — see [SWARM.md](SWARM.md) for the full list to choose from.
-
-To make this installable by others via `/plugin marketplace add
-<owner>/<repo>`, the project needs to live in a git repo with a remote
-(e.g. pushed to GitHub) — say the word if you want help setting that up.
+Measured via `claude plugin details cutit@cutit-marketplace`, that's
+**~10,220 tokens, always-on, in every session**, whether or not any of
+them ever get invoked. If you'd rather cherry-pick, skip the plugin and
+copy only the folders you want directly from
+`plugins/cutit/skills/<name>/` into your own `.claude/skills/<name>/`
+(project-level) or `~/.claude/skills/<name>/` (global) — see
+[SWARM.md](SWARM.md) for the full list to choose from.
 
 ## Why this works
 
