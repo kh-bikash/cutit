@@ -18,12 +18,13 @@ actually install (see [README.md](README.md)).
 adds a line to the always-on skill listing. Install only the categories
 relevant to how you actually build/run agents.
 
-**Installable as 5 themed plugins**, not just the all-in-one `cutit`
+**Installable as 6 smaller plugins**, not just the all-in-one `cutit`
 bundle — categories below map to plugins like this (full cost comparison
 in [README.md](README.md#install)):
 
 | Categories | Plugin |
 |---|---|
+| The core skill alone, no pattern skills | `cutit-core` (~167 tok, start here for plain token reduction) |
 | A (Planning), B (Delegation), F (Pipelines) | `cutit-agents` |
 | C (Tool use), G (Retrieval), H (Prompting) | `cutit-tooling` |
 | D (Context), J (Sessions), K (Recovery), L (Caching), M (Search), N (State), O (Routing) | `cutit-runtime` |

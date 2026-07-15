@@ -21,6 +21,9 @@ sync_group() {
   echo "synced $plugin: $# skills"
 }
 
+sync_group cutit-core \
+  cutit
+
 sync_group cutit-agents \
   cutit-task-decomposition cutit-plan-revision cutit-goal-scoping cutit-step-sizing \
   cutit-plan-caching cutit-dependency-ordering cutit-early-termination cutit-checkpoint-planning \

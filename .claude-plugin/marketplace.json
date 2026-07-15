@@ -3,12 +3,17 @@
   "owner": {
     "name": "cutit"
   },
-  "description": "Marketplace hosting the cutit family of plugins: Claude Code skills for cutting LLM token usage on agentic work without losing result quality. Install the all-in-one `cutit` plugin, or pick just the themed bundle(s) you need.",
+  "description": "Marketplace hosting the cutit family of plugins: Claude Code skills for cutting LLM token usage on agentic work without losing result quality. Just want general token reduction? Install `cutit-core`. Want everything? Install `cutit`. Otherwise pick the themed bundle(s) you need.",
   "plugins": [
+    {
+      "name": "cutit-core",
+      "source": "./plugins/cutit-core",
+      "description": "Just the general-purpose token-reduction skill, nothing specialized: narrow reads, cheap search, capped tool output, edit-not-rewrite, cache-aware prompting. Start here if you just want less token usage with no other setup."
+    },
     {
       "name": "cutit",
       "source": "./plugins/cutit",
-      "description": "All 112 cutit skills bundled together: the core protocol plus every themed skill below. Simplest install, ~10k tokens always-on."
+      "description": "All 112 cutit skills bundled together: cutit-core plus every themed skill below. Simplest install if you want maximum coverage, ~10k tokens always-on."
     },
     {
       "name": "cutit-agents",

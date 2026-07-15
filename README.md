@@ -37,30 +37,40 @@ The swarm has three layers, all bundled in one installable plugin (see
 This repo is a Claude Code **plugin marketplace**
 (`.claude-plugin/marketplace.json` at the root), live at
 [github.com/kh-bikash/cutit](https://github.com/kh-bikash/cutit), hosting
-**six plugins** so you can install everything or just the slice you need:
+**seven plugins** so you can install exactly as much as you want.
+
+**Just want less token usage, nothing specialized?**
 
 ```
 /plugin marketplace add kh-bikash/cutit
-/plugin install <plugin-name>@cutit-marketplace
+/plugin install cutit-core@cutit-marketplace
 ```
+
+That's it — `cutit-core` is one general-purpose skill (narrow reads,
+cheap search, capped tool output, edit-not-rewrite, cache-aware prompting)
+at **~167 tokens always-on**, the cheapest possible entry point into this
+whole project. Everything else below is for people who know they want a
+specific specialization on top of that.
 
 | Plugin | Skills | Always-on cost* | What it's for |
 |---|---|---|---|
-| `cutit` | 112 (all of them) | ~10,220 tok | The whole swarm in one shot |
+| `cutit-core` | 1 | **~167 tok** | Just the general token-reduction habit — start here |
+| `cutit` | 112 (all of them) | ~10,220 tok | `cutit-core` plus every specialization below, in one shot |
 | `cutit-agents` | 24 | ~2,589 tok | Building/orchestrating agent workflows: planning, sub-agent delegation, multi-agent pipelines |
 | `cutit-tooling` | 22 | ~1,874 tok | Tool use, retrieval/RAG, prompt construction |
 | `cutit-runtime` | 42 | ~3,815 tok | Operating long-running agents: context/memory budgeting, sessions, error recovery, caching, state, model routing, search |
 | `cutit-quality` | 20 | ~1,859 tok | Correctness/output discipline: verification, human-in-the-loop, eval/guardrails, response-length |
 | `cutit-domains` | 3 | ~340 tok | Frontend, backend, design work |
 
-*All six numbers measured directly with `claude plugin details
+*All seven numbers measured directly with `claude plugin details
 <plugin>@cutit-marketplace` on this build, not estimated.
 
-Pick `cutit` if you want it all with the least setup. Pick one or more of
-the other five if you know which part of your work this needs to help
-with — they compose freely (install `cutit-agents` + `cutit-tooling`
-together, for instance, without pulling in `cutit-runtime` too). A local
-folder works the same way as the GitHub form —
+Pick `cutit-core` alone if general token reduction is the whole ask. Add
+one of the themed plugins on top of it if you also want a specific
+specialization (`cutit-core` + `cutit-domains` is a common combo, for
+instance). Pick `cutit` instead of stacking plugins if you want everything
+with the least setup and don't mind the larger fixed cost. A local folder
+works the same way as the GitHub form —
 `/plugin marketplace add /path/to/cutit` — if you're testing a clone or a
 fork before it's pushed.
 
@@ -70,14 +80,14 @@ under whichever plugin it came from: `/cutit:cutit`,
 `/cutit-domains:cutit-frontend`, `/cutit-agents:cutit-parallel-delegation`,
 etc.
 
-**Still want finer than plugin-level granularity?** All six plugins pull
+**Still want finer than plugin-level granularity?** All seven plugins pull
 their skill content from one canonical source,
 `plugins/cutit/skills/<name>/`. Skip installing any plugin and copy just
 the folders you want from there into your own `.claude/skills/<name>/`
 (project-level) or `~/.claude/skills/<name>/` (global) — see
 [SWARM.md](SWARM.md) for the full list to choose from.
 
-**Maintainer note:** the five themed plugins (`cutit-agents`,
+**Maintainer note:** the six smaller plugins (`cutit-core`, `cutit-agents`,
 `cutit-tooling`, `cutit-runtime`, `cutit-quality`, `cutit-domains`) are
 generated, not hand-edited — `plugins/cutit/skills/` is the source of
 truth. After changing a skill there, run `scripts/sync-plugins.sh` to

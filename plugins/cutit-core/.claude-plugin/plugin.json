@@ -1,0 +1,8 @@
+{
+  "name": "cutit-core",
+  "displayName": "cutit: core (just token reduction)",
+  "version": "1.0.0",
+  "description": "The single core cutit skill: a general-purpose protocol for cutting LLM token usage on agentic coding work without cutting result quality — narrow reads, cheap search, capped tool output, edit-not-rewrite, lazy tool schemas, cache-aware prompting, model routing, terse narration. No specialization, no other skills bundled — install this if you just want the token-reduction habit, nothing more.",
+  "keywords": ["token-efficiency", "context-management", "minimal"],
+  "skills": "./skills/"
+}
